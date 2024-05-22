@@ -1,0 +1,58 @@
+#SRM University: ML Workshop
+#y=beta_not+(beta_one)(x)
+#Y=(a)((x)^(b))
+#log(Y)=log(a)+((b)(log(x)))
+
+'''Values:   '''
+
+import matplotlib.pyplot as plt
+import math
+
+x =[]
+y = []
+
+
+n=int(input("Please enter the number of observations noted: "))
+
+for k in range(n):
+
+    a = float(input("Please enter the distance: "))
+    p = math.log(a)
+    x.append(p)
+  
+    b = float(input("Please enter the volatge: "))
+    q = math.log(b)
+    y.append(q)
+
+x_bar=sum(x)/n
+y_bar=sum(y)/n
+
+bet1n=bet1d=0
+
+for i in range(n):
+    for u in range(n):
+        be1n=(x[u])*((y[u])-y_bar)
+        bet1n+=be1n
+    
+    for v in range(n):   
+        be1d=(x[v])*((x[v])-x_bar)
+        bet1d+=be1d
+    
+
+beta1=bet1n/bet1d
+
+beta0=y_bar-beta1*x_bar
+
+plt.plot(x, y)
+
+plt.xlabel('Distances(in cm)')
+plt.ylabel('Voltage(in V)')
+
+plt.title('Distance vs Voltage Graph')
+
+plt.show()
+
+x_given=float(input("Please enter the distance(in cm): "))
+y_required=beta0+(beta1*x_given)
+
+print("The Voltage at the given distance i.e.,",x_given,"is",y_required) 
